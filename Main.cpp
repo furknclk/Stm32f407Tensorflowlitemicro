@@ -24,7 +24,7 @@ __attribute__((aligned(16))) uint8_t tensor_arena[tensor_arena_size];
 
 int main(){
 	SystemCoreClockUpdate();
-	/** PWM için timer ve GPIO ayarlamalari yapiliyor.**/
+	/** PWM iÃ§in timer ve GPIO ayarlamalari yapiliyor.**/
 	RCC->APB1ENR|=0x04;
 	RCC->AHB1ENR|=0x08;
 	GPIOD->MODER|=0xAA000000;
@@ -43,11 +43,11 @@ int main(){
 	tflite::AllOpsResolver resolver;
 	const tflite::Model* model=::tflite::GetModel(sine_wave);
 	
-	if (model->version() != TFLITE_SCHEMA_VERSION) {//Versiyon karsilastirmasi yapiliyor
+	if (model->version() != TFLITE_SCHEMA_VERSION) {
 	error_reporter->Report(" VERSIYON HATASI ! Model versiyonu %d,tflite_schema_version %d",model->version(), TFLITE_SCHEMA_VERSION);
 	return 1;
 }
-	tflite::MicroInterpreter interpreter(model, resolver, tensor_arena,tensor_arena_size, error_reporter);//Interpreter kuruluyor
+	tflite::MicroInterpreter interpreter(model, resolver, tensor_arena,tensor_arena_size, error_reporter);
 
 	interpreter.AllocateTensors();
 	TfLiteTensor* input = interpreter.input(0);
@@ -61,11 +61,11 @@ int main(){
 	TfLiteTensor* output = interpreter.output(0);
 	float value =output->data.f[0];
 	
-	error_reporter->Report("sin=%f alpha=%f",value,i);//Radyan cinsinden açi degerinin sinüs karsiligi yazdiriliyor
+	error_reporter->Report("sin=%f alpha=%f",value,i);
 	TIM4->CCR1=(100-100*value)/2;
 	TIM4->CR1|=0x01;
   i+=0.01f;
 	if(i>2*PI) i=0.0f;
-	delay(1);//bir miktar bekleme süresi olusturuldu
+	delay(1);
 }
 }
