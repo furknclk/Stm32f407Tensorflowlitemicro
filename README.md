@@ -1,7 +1,7 @@
-# Stm32f407Tensorflowlitemicro
-stm32f407vg discovery kart üzerinde Tensorflow Lite Micro HelloWorld  uygulaması
+Stm32f407Tensorflowlitemicro
+TensorFlow Lite Micro HelloWorld application on STM32F407VG Discovery board
 
-İndirdiğiniz kütüphaneleri Kaynak kodlar ile aynı dizine koymanız yeterli.Adresleri ile ilgi tanımlama proje dosyasında yapıldı. Çalıştırılan örnek tflite modeli Pete warden tarafından yazılan tinyMl kitabındaki HelloWorld uygulamasıdır. Debug consolu stm32f407 üzerinde çalışabilecek şekilde değiştirildi.
+It is sufficient to place the downloaded libraries in the same directory as the source code. The address definitions have been made in the project file. The example tflite model that is run is the HelloWorld application from the tinyML book written by Pete Warden. The debug console has been modified to work on the STM32F407.
 
-Model hakkında ::
-Model radyan cinsinden girilen açı değerlerinin sinüs fonksiyonundaki karşılığını tahmin etmek üzere eğitilmiştir. Modelden elde edilen tahminler kart üzerindeki d4 pinine PWM sinyali olarak uygulanmıştır. Eğiteceğiniz farklı bir model de problemsiz çalışacaktır.
+About the model::
+The model is trained to predict the sine function value of angle inputs given in radians. The predictions obtained from the model are applied as a PWM signal to the D4 pin on the board. A different model you train will also work without any problems.
